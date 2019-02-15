@@ -1,0 +1,12 @@
+.title{
+    size: 30px;
+}
+
+.title, .guess_word, .tries{
+    text-align: center;
+}
+
+.letters_tracker{
+    height: 60px;
+}
+
