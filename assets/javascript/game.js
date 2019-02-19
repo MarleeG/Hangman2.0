@@ -1,9 +1,6 @@
-const log = console.log;
-
 function game() {
     // Word Options
-    let words = ['cat', 'gorilla', 'turtle', 'bird', 'common'];
-    // let words = ['cat', 'gorilla'];
+    let words = ['cat', 'gorilla', 'turtle', 'bird', 'elephant'];
 
     let wordChosen = '';
     let lettersKeyed = [];
@@ -14,6 +11,7 @@ function game() {
     let tries = 10;
     let wins = 0;
 
+    $('#game_alert').hide();
     updateScoreTable();
 
     // display scores
@@ -30,7 +28,6 @@ function game() {
 
     // displaying underscores
     function displayUnderscores(word) {
-        log(`Word: ${word}`);
         lettersKeyed = [];
         wordChosen = word;
         underscores = [];
@@ -48,21 +45,24 @@ function game() {
         displayUnderscores(randomWord(words));
     }
 
-    // $("#hi").keypress(function(e) {
-        
-    // });
+    function showAlert(text){
+        $('#game_alert').removeClass('fadeOutUp')
+        $('#game_alert').text(text);
+        $('#game_alert').addClass('fadeInDown');
+        $('#game_alert').show();
+    }
 
-    document.addEventListener('keypressed', e => {
-        var charTyped = String.fromCharCode(e.which);
-        if (/[a-z\d]/i.test(charTyped)) {
-            alert("Letter or number typed: " + charTyped);
-        }
-    })
+    function hideAlert(){
+        $('#game_alert').removeClass('fadeInDown');
+        $('#game_alert').addClass('fadeOutUp');
+        $('#game_alert').hide();
+    }
+
     // Keyup - allows to access key value
     document.addEventListener('keyup', function (e) {
+        hideAlert();
+
         var indexOfLetter = '';
-        log(`Key pressed: ${e.key}`);
-        log('--------------------------');
 
         // If there is a letter that exists that the user chooses then make letter appear in the correct spot
         if (wordChosen.indexOf(e.key) >= 0) {
@@ -78,6 +78,7 @@ function game() {
 
             // add to wins total if there are no underscores in underscore array
             if (underscores.indexOf('_') === -1) {
+                tries = 10;
                 wins++;
                 updateScoreTable();
 
@@ -96,7 +97,7 @@ function game() {
                 addingLastLetter = false;
 
                 if (words.length === 0) {
-                    alert(`You've won the game!`);
+                    showAlert('You\'ve won the game!')
                     gameWon = true;
                 }
             }
@@ -104,15 +105,15 @@ function game() {
             // This letter is not in the word && it already has been choosen
         } else if (wordChosen.indexOf(e.key) === -1 && lettersKeyed.indexOf(e.key) === -1) {
             tries--;
-            alert(`This letter is not in the word. Choose another letter!`);
+            showAlert('This letter is not in the word. Choose another letter!')
 
 
             if (tries === 0) {
-                // lettersKeyed = [];
                 if (!gameWon) {
                     displayUnderscores(randomWord(words));
                 }
-                alert('Guess this new word!')
+                showAlert('Guess this new word!')
+                tries = 10;
             }
             updateScoreTable();
         }
@@ -120,10 +121,6 @@ function game() {
 
         // Track letters keyed
         trackLetters(e.key);
-
-
-        // addingLastLetter = true;
-
     })
 
     function trackLetters(letter_keyed) {
@@ -134,11 +131,10 @@ function game() {
             }
             addingLastLetter = true;
         } else {
-            alert(`The letter has been choosen. Pick another letter.`);
+            showAlert('The letter has been choosen. Pick another letter.')
         }
         $('.letters_keyed').text(lettersKeyed.join(' '));
     }
-
 }
 
 $(document).ready(function () {

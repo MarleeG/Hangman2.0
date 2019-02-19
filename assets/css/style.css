@@ -1,5 +1,17 @@
+body{
+    background-color: #15213A;
+    color: white;
+    font-family: 'Coiny', cursive;
+}
+
+.guess_word{
+    margin-top: 10%;
+}
+
 .title{
-    size: 30px;
+    font-size: 60px;
+    margin-top: 40px;
+    align-content: center;
 }
 
 .title, .guess_word, .tries{
@@ -9,4 +21,21 @@
 .letters_tracker{
     height: 60px;
 }
+
+
+/* .my_row{
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+.my_col{
+    border-color: yellow;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+} */
+
+
 

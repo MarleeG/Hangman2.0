@@ -1,0 +1,23 @@
+{
+  "name": "Hangman2.0",
+  "version": "1.0.0",
+  "description": "## Under Construction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarleeG/Hangman2.0.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarleeG/Hangman2.0/issues"
+  },
+  "homepage": "https://github.com/MarleeG/Hangman2.0#readme",
+  "dependencies": {
+    "animate.css": "^3.7.0"
+  }
+}
