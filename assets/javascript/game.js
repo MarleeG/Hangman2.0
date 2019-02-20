@@ -107,7 +107,6 @@ function game() {
             tries--;
             showAlert('This letter is not in the word. Choose another letter!')
 
-
             if (tries === 0) {
                 if (!gameWon) {
                     displayUnderscores(randomWord(words));
@@ -117,7 +116,6 @@ function game() {
             }
             updateScoreTable();
         }
-
 
         // Track letters keyed
         trackLetters(e.key);
