@@ -8,6 +8,7 @@ Guess the word! Type in the letters you believe are in the word.
 - CSS
 - HTML
 - Javscript
+- jQuery
 - Google Fonts
 
 ## Deployed App
